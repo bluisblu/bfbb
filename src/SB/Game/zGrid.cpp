@@ -8,6 +8,11 @@
 #include <types.h>
 #include <PowerPC_EABI_Support\MSL_C\MSL_Common\cmath>
 
+xGrid colls_grid;
+xGrid colls_oso_grid;
+xGrid npcs_grid;
+static S32 zGridInitted;
+
 static void hack_flag_shadows(zScene* s)
 {
     static U32 special_models[25] = {

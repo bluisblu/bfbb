@@ -6,12 +6,10 @@
 #include "xEnt.h"
 #include "xGrid.h"
 
-xGrid colls_grid;
-xGrid colls_oso_grid;
-xGrid npcs_grid;
-static S32 zGridInitted;
+extern xGrid colls_grid;
+extern xGrid colls_oso_grid;
+extern xGrid npcs_grid;
 
-static void hack_flag_shadows(zScene* s);
 void zGridUpdateEnt(xEnt* ent);
 void zGridExit(zScene*);
 void zGridInit(zScene* s);
