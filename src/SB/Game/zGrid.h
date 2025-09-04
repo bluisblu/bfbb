@@ -6,6 +6,8 @@
 #include "xEnt.h"
 #include "xGrid.h"
 
+#include <PowerPC_EABI_Support\MSL_C\MSL_Common\cmath>
+
 extern xGrid colls_grid;
 extern xGrid colls_oso_grid;
 extern xGrid npcs_grid;
