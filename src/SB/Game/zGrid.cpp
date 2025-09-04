@@ -8,13 +8,6 @@
 #include <types.h>
 #include <PowerPC_EABI_Support\MSL_C\MSL_Common\cmath>
 
-xGrid colls_grid;
-xGrid colls_oso_grid;
-xGrid npcs_grid;
-static U32 special_models[25] = {}; // $666
-static S32 zGridInitted;
-static bool init; // $667
-
 static void hack_flag_shadows(zScene* s)
 {
     static U32 special_models[25] = {
@@ -108,8 +101,8 @@ void zGridInit(zScene* s)
 {
     gGridIterActive = NULL;
     xBox* ebox = xEntGetAllEntsBox();
-    xBox osobox;
     F32 min_csize;
+    xBox osobox;
 
     F32 diff_x = MAX(0.001f, ebox->upper.x - ebox->lower.x);
     F32 diff_z = MAX(0.001f, ebox->upper.z - ebox->lower.z);
@@ -133,6 +126,9 @@ void zGridInit(zScene* s)
     }
 
     xGridInit(&colls_grid, ebox, (U16)min_csize, (U16)tmp_z, 1);
+
+    // non-matching: missing a bunch of lwz, lfs and stw instructions,
+    // and ghidra has a few local variables that *appear* unused
 
     F32 local_7c = ebox->lower.x - 1.0f;
     F32 local_74 = ebox->lower.z - 1.0f;
@@ -209,6 +205,7 @@ void zGridUpdateEnt(xEnt* ent)
     S32 oversize = 0;
     xGrid* grid = NULL;
 
+    // case 2 and 3 need to use `cntlzw` but are `mr` currently
     switch (ent->gridb.ingrid)
     {
     case 1:
