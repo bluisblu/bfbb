@@ -1,5 +1,5 @@
-#ifndef ZNPCSNDTABLE_H
-#define ZNPCSNDTABLE_H
+#ifndef ZNPCSNDLISTS_H
+#define ZNPCSNDLISTS_H
 
 #include <types.h>
 
@@ -36,12 +36,11 @@ enum en_NPC_SOUND
     NPC_STYP_FORCE = 0x7fffffff
 };
 
-class NPCSndProp // total size: 0xC
+struct NPCSndProp
 {
-public:
-    en_NPC_SOUND sndtype; // offset 0x0, size 0x4
-    S32 flg_snd; // offset 0x4, size 0x4
-    F32 tym_delayNext; // offset 0x8, size 0x4
+    en_NPC_SOUND sndtype;
+    S32 flg_snd;
+    F32 tym_delayNext;
 };
 
 struct NPCSndTrax
